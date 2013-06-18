@@ -1,0 +1,30 @@
+%table
+  %thead
+    %tr
+      %th ID
+      %th First Name
+      %th Last Name
+      %th Middle Name
+      %th Nickname
+      %th Name Suffix
+      %th Gender
+      %th Birthday
+      %th In Office
+      %th Govtrack ID
+      %th State
+      %th Party
+  %tbody
+    - @reps.each do |r|
+      %tr
+        %td= r.id
+        %td= link_to r.first_name, r
+        %td= link_to r.last_name, r
+        %td= r.middle_name
+        %td= r.nickname
+        %td= r.name_suffix
+        %td= r.gender
+        %td= r.birthday
+        %td= r.in_office
+        %td= r.govtrack_id
+        %td= link_to r.state.name, r.state
+        %td= link_to r.party.member_noun, r.party

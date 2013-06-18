@@ -1,0 +1,34 @@
+%table
+  %thead
+    %tr
+      %th ID
+      %th First Name
+      %th Last Name
+      %th Middle Name
+      %th Nickname
+      %th Name Suffix
+      %th Gender
+      %th Birthday
+      %th Seniority
+      %th In Office
+      %th Senate Class
+      %th Govtrack ID
+      %th State
+      %th Party
+  %tbody
+    - @senators.each do |s|
+      %tr
+        %td= s.id
+        %td= link_to s.first_name, s
+        %td= link_to s.last_name, s
+        %td= s.middle_name
+        %td= s.nickname
+        %td= s.name_suffix
+        %td= s.gender
+        %td= s.birthday
+        %td= s.seniority
+        %td= s.in_office
+        %td= s.senate_class
+        %td= s.govtrack_id
+        %td= link_to s.state.name, s.state
+        %td= link_to s.party.member_noun, s.party
