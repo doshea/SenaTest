@@ -12,5 +12,6 @@
 #
 
 class Chamber < ActiveRecord::Base
-  attr_accessible :female_title, :male_title, :name, :neuter_title
+  attr_accessible :female_title, :male_title, :name, :neuter_title, :short_name
+  has_many :politicians
 end

@@ -6,6 +6,10 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'bcrypt-ruby'
 
+#Used in seeding the members of Congress
+gem 'httparty'
+gem 'json'
+
 #gem 'carrierwave'
 #gem 'rmagick'
 #gem 'fog'

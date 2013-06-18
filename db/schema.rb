@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20130618044753) do
 
   create_table "chambers", :force => true do |t|
     t.string   "name"
+    t.string   "short_name"
     t.string   "male_title"
     t.string   "female_title"
     t.string   "neuter_title"
@@ -35,14 +36,16 @@ ActiveRecord::Schema.define(:version => 20130618044753) do
     t.string   "middle_name"
     t.string   "last_name"
     t.string   "nickname"
-    t.integer  "state_id"
-    t.boolean  "in_office"
-    t.string   "gender"
-    t.integer  "senate_class"
-    t.date     "birthday"
-    t.integer  "govtrack_id"
-    t.boolean  "seniority"
     t.string   "name_suffix"
+    t.string   "gender"
+    t.date     "birthday"
+    t.boolean  "seniority"
+    t.boolean  "in_office"
+    t.integer  "senate_class"
+    t.integer  "govtrack_id"
+    t.integer  "state_id"
+    t.integer  "chamber_id"
+    t.integer  "party_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -50,8 +53,9 @@ ActiveRecord::Schema.define(:version => 20130618044753) do
   create_table "states", :force => true do |t|
     t.string   "name"
     t.string   "abbreviation"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "nonvoting",    :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end

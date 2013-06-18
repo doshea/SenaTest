@@ -5,14 +5,20 @@ class CreatePoliticians < ActiveRecord::Migration
       t.string :middle_name
       t.string :last_name
       t.string :nickname
-      t.belongs_to :state
-      t.boolean :in_office
-      t.string :gender
-      t.integer :senate_class
-      t.date :birthday
-      t.integer :govtrack_id
-      t.boolean :seniority
       t.string :name_suffix
+
+      t.string :gender
+      t.date :birthday
+
+      t.boolean :seniority
+      t.boolean :in_office
+      t.integer :senate_class
+
+      t.integer :govtrack_id
+
+      t.belongs_to :state
+      t.belongs_to :chamber
+      t.belongs_to :party
 
       t.timestamps
     end
