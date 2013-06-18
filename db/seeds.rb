@@ -1,4 +1,7 @@
 State.delete_all
+Chamber.delete_all
+Party.delete_all
+Politician.delete_all
 
 #Seed all 50 states, plus Washington DC
 State.create(:abbreviation=>"DC",:name=>"Washington, D.C.")

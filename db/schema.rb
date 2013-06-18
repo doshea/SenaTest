@@ -11,6 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130618044753) do
+
+  create_table "chambers", :force => true do |t|
+    t.string   "name"
+    t.string   "male_title"
+    t.string   "female_title"
+    t.string   "neuter_title"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "parties", :force => true do |t|
+    t.string   "name"
+    t.string   "adjective"
+    t.string   "member_noun"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "politicians", :force => true do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "nickname"
+    t.integer  "state_id"
+    t.boolean  "in_office"
+    t.string   "gender"
+    t.integer  "senate_class"
+    t.date     "birthday"
+    t.integer  "govtrack_id"
+    t.boolean  "seniority"
+    t.string   "name_suffix"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
 end
