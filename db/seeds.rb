@@ -80,7 +80,7 @@ house_of_reps = Chamber.create(name: 'House of Representatives', short_name: 'ho
 Chamber.all.each do |chamber|
   settings = {
       chamber: chamber.short_name,
-      apikey: '70eed932c7f24f8ea250b6685851838e',
+      apikey: ENV['SUNLIGHT_KEY'],
       per_page: 50,
       page: 0
   }
