@@ -1,0 +1,50 @@
+/* This will contain global css for your application */
+// $inner-circle: #fcf0da;
+// $outer-circle: #d6b685;
+$inner-circle: #fcf0da;
+$outer-circle: #d6b685;
+
+
+* {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html {
+  background: url("<%= asset_path 'bgHtml.jpeg' %>") no-repeat top center;
+  overflow-y:scroll;
+  height: 100%;
+}
+body {
+  background: transparent url("<%= asset_path 'bgBody.jpeg' %>") no-repeat 50% 205px;
+  color: #000;
+  font: normal 12px/18px sans-serif;
+  // background: $inner-circle; /* Old browsers */
+  // background: -moz-radial-gradient(center, circle cover, $inner-circle 0%, $outer-circle 100%); /* FF3.6+ */
+  // background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$inner-circle), color-stop(100%,$outer-circle)); /* Chrome,Safari4+ */
+  // background: -webkit-radial-gradient(center, circle cover, $inner-circle 0%,$outer-circle 100%); /* Chrome10+,Safari5.1+ */
+  // background: -o-radial-gradient(center, circle cover, $inner-circle 0%,$outer-circle 100%); /* Opera 12+ */
+  // background: -ms-radial-gradient(center, circle cover, $inner-circle 0%,$outer-circle 100%); /* IE10+ */
+  // background: radial-gradient(circle at center, $inner-circle 0%,$outer-circle 100%); /* W3C */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$inner-circle', endColorstr='$outer-circle',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */;
+
+  min-height: 100%;
+  margin: 0;
+  padding:  0;
+
+}
+#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  position: relative;
+}
+
+.red {
+  color: red;
+}
+.white {
+  color: white;
+}
+.blue {
+  color: blue;
+}
