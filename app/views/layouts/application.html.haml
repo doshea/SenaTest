@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:charset => "utf-8"}
-    %title SenaTest
+    %title Sen@eTest
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -10,7 +10,8 @@
     #container
       = image_tag('congressional_seal_225px.png')
       = render partial: 'layouts/partials/header'
-      = yield
+      .row
+        = yield
       / Foundation initialization javascript
       :javascript
         $(document).foundation();

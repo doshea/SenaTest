@@ -1,0 +1,25 @@
+= form_for @politician do |f|
+  .row
+    .large-2.columns
+      = f.label :first_name
+      = f.text_field :first_name
+    .large-2.columns
+      = f.label :middle_name
+      = f.text_field :middle_name
+    .large-2.columns
+      = f.label :last_name
+      = f.text_field :last_name
+    .large-2.columns
+      = f.label :nickname
+      = f.text_field :nickname
+    .large-2.columns
+      = f.label :name_suffix
+      = f.text_field :name_suffix
+    .large-1.columns
+      = f.label :gender
+      = f.select :gender, [['Male','M'],['Female','F']], prompt: 'Select Gender'
+    .large-1.columns
+
+
+
+  = f.submit nil, class: 'button'

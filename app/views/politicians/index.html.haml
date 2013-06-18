@@ -1,0 +1,6 @@
+%h3 Senators
+= render partial: 'politicians/partials/table', locals: {politicians: @senators}
+%h3 Representatives
+= render partial: 'politicians/partials/table', locals: {politicians: @reps, chamber: 'house'}
+:javascript
+  $('table').dataTable();

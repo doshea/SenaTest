@@ -1,0 +1,34 @@
+%table
+  %thead
+    %tr
+      %th ID
+      %th First Name
+      %th Last Name
+      %th Middle Name
+      %th Nickname
+      %th Name Suffix
+      %th Gender
+      %th Birthday
+      %th Seniority
+      %th In Office
+      %th Senate Class
+      %th Govtrack ID
+      %th State
+      %th Party
+  %tbody
+    - politicians.each do |p|
+      %tr
+        %td= p.id
+        %td= link_to p.first_name, p
+        %td= link_to p.last_name, p
+        %td= p.middle_name
+        %td= p.nickname
+        %td= p.name_suffix
+        %td= p.gender
+        %td= p.birthday
+        %td= p.seniority
+        %td= p.in_office
+        %td= p.senate_class
+        %td= p.govtrack_id
+        %td= link_to p.state.name, p.state
+        %td= link_to p.party.member_noun, p.party
