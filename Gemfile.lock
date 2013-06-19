@@ -260,6 +260,7 @@ DEPENDENCIES
   json
   launchy
   meta_request
+  nokogiri
   pg
   pry-debugger
   pry-rails

@@ -12,7 +12,6 @@ gem 'json'
 
 #Used to get members' images
 gem 'nokogiri'
-gem 'open-uri'
 
 gem 'carrierwave'
 gem 'rmagick'
