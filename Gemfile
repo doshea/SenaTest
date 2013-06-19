@@ -11,8 +11,8 @@ gem 'httparty'
 gem 'json'
 
 #Used to get members' images
-require 'nokogiri'
-require 'open-uri'
+gem 'nokogiri'
+gem 'open-uri'
 
 gem 'carrierwave'
 gem 'rmagick'
