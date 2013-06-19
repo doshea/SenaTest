@@ -25,7 +25,7 @@ group :assets do
   gem 'uglifier'
   gem 'zurb-foundation'
   gem 'foundation-icons-sass-rails'
-  # gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
   # gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 end
 
