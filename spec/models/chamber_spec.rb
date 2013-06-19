@@ -4,6 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  name         :string(255)
+#  short_name   :string(255)
 #  male_title   :string(255)
 #  female_title :string(255)
 #  neuter_title :string(255)

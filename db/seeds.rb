@@ -7,7 +7,16 @@ State.delete_all
 Chamber.delete_all
 Party.delete_all
 Politician.delete_all
+User.delete_all
 puts "\nOld records deleted."
+
+#Seed two admin users and two test users
+puts "\nSeeding Users..."
+User.create(email: 'dylan.j.oshea@gmail.com', username: 'doshea', password: 'qwerty', password_confirmation: 'qwerty', is_admin: true)
+User.create(email: 'jessica.gonchar@gmail.com', username: 'jgonchar', password: 'qwerty', password_confirmation: 'qwerty', is_admin: true)
+User.create(email: 'test@gmail.com', username: 'test', password: 'qwerty', password_confirmation: 'qwerty', is_admin: false)
+User.create(email: 'test2@gmail.com', username: 'test2', password: 'qwerty', password_confirmation: 'qwerty', is_admin: false)
+puts "Users seeded."
 
 #Seed all 50 states
 puts "\nSeeding States..."

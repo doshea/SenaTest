@@ -6,4 +6,9 @@ Senatest::Application.routes.draw do
 
   resources :states, only: [:index, :show]
   resources :parties, only: [:index, :show]
+
+  resources :users, except: [:show]
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/login' => 'sessions#destroy'
 end
