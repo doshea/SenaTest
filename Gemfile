@@ -26,7 +26,7 @@ group :assets do
   gem 'zurb-foundation'
   gem 'foundation-icons-sass-rails'
   # gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-  gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+  # gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 end
 
 group :development, :test do
