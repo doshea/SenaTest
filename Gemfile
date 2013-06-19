@@ -10,9 +10,14 @@ gem 'bcrypt-ruby'
 gem 'httparty'
 gem 'json'
 
-#gem 'carrierwave'
-#gem 'rmagick'
-#gem 'fog'
+#Used to get members' images
+require 'nokogiri'
+require 'open-uri'
+
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog'
+gem 'remotipart'
 
 group :assets do
   gem 'sass-rails'

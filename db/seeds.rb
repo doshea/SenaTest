@@ -1,12 +1,16 @@
 require 'httparty'
 require 'json'
 
+puts "\nBEGINNING SEED"
+puts "-------------"
 State.delete_all
 Chamber.delete_all
 Party.delete_all
 Politician.delete_all
+puts "\nOld records deleted."
 
 #Seed all 50 states
+puts "\nSeeding States..."
 State.create(abbreviation: "AR",name: "Arkansas")
 State.create(abbreviation: "DE",name: "Delaware")
 State.create(abbreviation: "FL",name: "Florida")
@@ -57,6 +61,7 @@ State.create(abbreviation: "KY",name: "Kentucky")
 State.create(abbreviation: "MA",name: "Massachusetts")
 State.create(abbreviation: "PA",name: "Pennsylvania")
 State.create(abbreviation: "VA",name: "Virginia")
+puts "Voting States seeded."
 
 #Seed Washington DC and the other 5 nonvoting states
 State.create(abbreviation: "DC",name: "Washington, D.C.", nonvoting: true)
@@ -65,16 +70,20 @@ State.create(abbreviation: "PR",name: "Puerto Rico", nonvoting: true)
 State.create(abbreviation: "AS",name: "American Samoa", nonvoting: true)
 State.create(abbreviation: "VI",name: "US Virgin Islands", nonvoting: true)
 State.create(abbreviation: "GU",name: "Guam", nonvoting: true)
-
+puts "Non-voting States seeded."
 
 #Seed the two main political parties and Independent
+puts "\nSeeding Parties..."
 Party.create(name: 'Democratic Party', adjective: 'Democratic', member_noun: 'Democrat')
 Party.create(name: 'Republican Party', adjective: 'Republican', member_noun: 'Republican')
 Party.create(name: 'Independent', adjective: 'Independent', member_noun: 'Independent')
+puts "Parties seeded."
 
 #Seed the two chambers of Congress
+puts "\nSeeding Chambers(House and Senate)..."
 senate = Chamber.create(name: 'Senate', short_name: 'senate', male_title: 'senator', female_title: 'senator', neuter_title: 'senator')
 house_of_reps = Chamber.create(name: 'House of Representatives', short_name: 'house', male_title: 'congressman', female_title: 'congresswoman', neuter_title: 'congressperson')
+puts "Chambers seeded."
 
 #Seed the members of both houses of Congress
 Chamber.all.each do |chamber|
@@ -84,6 +93,7 @@ Chamber.all.each do |chamber|
       per_page: 50,
       page: 0
   }
+  puts "\nSeeding #{chamber.neuter_title}s..."
   counter = 1
   total_results = nil
   while total_results.nil? || (counter <= total_results)
@@ -111,7 +121,7 @@ Chamber.all.each do |chamber|
                               senate_class: p_h['senate_class'],
                               birthday: p_h['birthday'],
                               govtrack_id: p_h['govtrack_id'],
-                              seniority: p_h['state_rank'],
+                              seniority: p_h['state_rank'] == 'senior',
                               name_suffix: p_h['name_suffix']
                             )
       State.find_by_abbreviation(p_h['state']).politicians << politician
@@ -120,5 +130,22 @@ Chamber.all.each do |chamber|
     end
     counter += 1
   end
-  puts "#{chamber.name} seeded."
+  puts "#{chamber.neuter_title.capitalize}s seeded."
 end
+
+#Add images to each rep from Govtrack
+new_counter = 1
+image_fail_counter = 0
+Politician.all.each do |p|
+  # if new_counter < 20
+    puts "\nAdding image to #{new_counter.ordinalize} politician"
+    puts "#{p.first_name} #{p.last_name}"
+    p.get_govtrack_image!
+    image_fail_counter += 1 if p.govtrack_image.nil?
+    new_counter += 1
+  # end
+end
+
+
+puts "\n-------------"
+puts "SEED COMPLETE"

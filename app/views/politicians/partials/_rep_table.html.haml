@@ -2,6 +2,7 @@
   %thead
     %tr
       %th ID
+      %th Portrait
       %th First Name
       %th Last Name
       %th Middle Name
@@ -17,6 +18,7 @@
     - @reps.each do |r|
       %tr
         %td= r.id
+        %td= image_tag r.govtrack_image.thumb
         %td= link_to r.first_name, r
         %td= link_to r.last_name, r
         %td= r.middle_name

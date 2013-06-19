@@ -10,5 +10,5 @@
 //= require morris/morris.min
 // graph.min
 //= require jquery-ui-1.10.2.custom.min
-//= require senatest
 //= require dataTables/jquery.dataTables
+//= require senatest
