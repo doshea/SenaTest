@@ -28,7 +28,7 @@ class Politician < ActiveRecord::Base
   belongs_to :party
   attr_accessible :birthday, :first_name, :gender, :govtrack_id, :in_office, :last_name, :middle_name, :name_suffix, :nickname, :senate_class, :seniority, :state_id, :chamber_id, :party_id, :image, :remote_image_url
 
-  mount_uploader :image, PolticianPicUploader
+  mount_uploader :image, PoliticianPicUploader
 
   def full_name
     "#{self.gendered_title} #{self.first_name} #{"'#{self.nickname}'" if self.nickname} #{self.middle_name} #{self.last_name} #{self.name_suffix}"
