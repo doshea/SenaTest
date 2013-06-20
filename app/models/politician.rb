@@ -49,6 +49,14 @@ class Politician < ActiveRecord::Base
     end
   end
 
+  def seniority_to_s
+    unless self.seniority.nil?
+      self.seniority? ? "senior" : "junior"
+    else
+      ''
+    end
+  end
+
   def get_govtrack_image
     url = "http://www.govtrack.us/congress/members/#{self.govtrack_id}"
     doc = Nokogiri::HTML(open(url))

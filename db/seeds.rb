@@ -143,7 +143,7 @@ Chamber.all.each do |chamber|
           senate_class: p_h['senate_class'],
           birthday: p_h['birthday'],
           govtrack_id: p_h['govtrack_id'],
-          seniority: p_h['state_rank'] == 'senior',
+          seniority: p_h['state_rank'] == 'senior' if p_h['state_rank'].present?,
           name_suffix: p_h['name_suffix']
         )
         State.find_by_abbreviation(p_h['state']).politicians << politician
