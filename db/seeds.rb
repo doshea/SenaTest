@@ -1,12 +1,18 @@
 require 'httparty'
 require 'json'
 
+reset_politicians = ''
+while (reset_politicians != 'y') && (reset_politicians != 'n')
+  print "\nReset all Politicians? (y/n) "
+  reset_politicians = gets.chomp.downcase
+end
+
 puts "\nBEGINNING SEED"
 puts "-------------"
 State.delete_all
 Chamber.delete_all
 Party.delete_all
-Politician.delete_all
+Politician.delete_all if (respreset_politiciansonse == 'y')
 User.delete_all
 puts "\nOld records deleted."
 
