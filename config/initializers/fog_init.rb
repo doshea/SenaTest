@@ -11,6 +11,8 @@ CarrierWave.configure do |config|
   # config.asset_host   = 'https://assets.example.com'              # optional, defaults to nil
 end
 
+config.cache_dir = "#{Rails.root}/tmp/uploads"                     # Generate http:// urls. Defaults to :authenticated_read (https://)
+
 CarrierWave.configure {|config| config.fog_directory = 'senatest-development'} if Rails.env.development?
 CarrierWave.configure {|config| config.fog_directory = 'senatest-test'} if Rails.env.test?
 CarrierWave.configure {|config| config.fog_directory = 'senatest-production'} if Rails.env.production?
