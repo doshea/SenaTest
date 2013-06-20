@@ -28,6 +28,9 @@ class Politician < ActiveRecord::Base
   belongs_to :party
   attr_accessible :birthday, :first_name, :gender, :govtrack_id, :in_office, :last_name, :middle_name, :name_suffix, :nickname, :senate_class, :seniority, :state_id, :chamber_id, :party_id, :image, :remote_image_url
 
+  scope :senators, where('senate_class > ?', 0)
+  scope :reps, where('senate_class IS NULL')
+
   mount_uploader :image, PoliticianPicUploader
 
   def full_name
