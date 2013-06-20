@@ -18,7 +18,7 @@
     - @reps.each do |r|
       %tr
         %td= r.id
-        %td= image_tag r.image.thumb.url
+        %td= image_tag(r.image.thumb) unless r.image.blank?
         %td= link_to r.first_name, r
         %td= link_to r.last_name, r
         %td= r.middle_name

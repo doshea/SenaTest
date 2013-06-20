@@ -1,18 +1,18 @@
 require 'httparty'
 require 'json'
 
-reset_politicians = ''
-while (reset_politicians != 'y') && (reset_politicians != 'n')
-  print "\nReset all Politicians? (y/n) "
-  reset_politicians = gets.chomp.downcase
-end
+reset_politicians = true
+# while (reset_politicians != 'y') && (reset_politicians != 'n')
+#   print "\nReset all Politicians? (y/n) "
+#   reset_politicians = gets.chomp.downcase
+# end
 
 puts "\nBEGINNING SEED"
 puts "-------------"
 State.delete_all
 Chamber.delete_all
 Party.delete_all
-Politician.delete_all if (respreset_politiciansonse == 'y')
+Politician.delete_all if reset_politicians
 User.delete_all
 puts "\nOld records deleted."
 
@@ -124,24 +124,26 @@ Chamber.all.each do |chamber|
       results = data['results']
     end
     p_h = results[counter-page_start-1]
-    state = State.find_by_abbreviation(p_h['state'])
-    if state.present?
-      politician = Politician.create(
-                              first_name: p_h['first_name'],
-                              last_name: p_h['last_name'],
-                              middle_name: p_h['middle_name'],
-                              nickname: p_h['nickname'],
-                              gender: p_h['gender'],
-                              in_office: p_h['in_office'],
-                              senate_class: p_h['senate_class'],
-                              birthday: p_h['birthday'],
-                              govtrack_id: p_h['govtrack_id'],
-                              seniority: p_h['state_rank'] == 'senior',
-                              name_suffix: p_h['name_suffix']
-                            )
-      State.find_by_abbreviation(p_h['state']).politicians << politician
-      Party.find_by_party_initial(p_h['party']).politicians << politician
-      chamber.politicians << politician
+    if reset_politicians || Politician.find_by_govtrack_id(p_h['govtrack_id']).nil?
+      state = State.find_by_abbreviation(p_h['state'])
+      if state.present?
+        politician = Politician.create(
+                                first_name: p_h['first_name'],
+                                last_name: p_h['last_name'],
+                                middle_name: p_h['middle_name'],
+                                nickname: p_h['nickname'],
+                                gender: p_h['gender'],
+                                in_office: p_h['in_office'],
+                                senate_class: p_h['senate_class'],
+                                birthday: p_h['birthday'],
+                                govtrack_id: p_h['govtrack_id'],
+                                seniority: p_h['state_rank'] == 'senior',
+                                name_suffix: p_h['name_suffix']
+                              )
+        State.find_by_abbreviation(p_h['state']).politicians << politician
+        Party.find_by_party_initial(p_h['party']).politicians << politician
+        chamber.politicians << politician
+      end
     end
     counter += 1
   end
@@ -150,13 +152,12 @@ end
 
 #Add images to each rep from Govtrack
 new_counter = 1
-image_fail_counter = 0
-Politician.all.each do |p|
+needs_image = reset_politicians ? Politician.all : Politician.where('image = ?', nil)
+needs_image.each do |p|
   # if new_counter < 20
     puts "\nAdding image to #{new_counter.ordinalize} politician"
     puts "#{p.first_name} #{p.last_name}"
     p.get_govtrack_image!
-    image_fail_counter += 1 if p.image.nil?
     new_counter += 1
   # end
 end

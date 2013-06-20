@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(:version => 20130619071810) do
     t.integer  "state_id"
     t.integer  "chamber_id"
     t.integer  "party_id"
-    t.text     "govtrack_image"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.text     "image"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "states", :force => true do |t|
