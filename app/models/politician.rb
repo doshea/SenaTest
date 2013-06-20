@@ -30,12 +30,30 @@ class Politician < ActiveRecord::Base
 
   mount_uploader :govtrack_image, GovtrackImageUploader
 
+  def full_name
+    "#{self.gendered_title} #{self.first_name} #{"'#{self.nickname}'" if self.nickname} #{self.middle_name} #{self.last_name} #{self.name_suffix}"
+  end
+
+  def gendered_title
+    gend = gender.upcase
+    case gend
+    when 'M'
+      self.chamber.male_title.capitalize
+    when 'F'
+      self.chamber.female_title.capitalize
+    else
+      self.chamber.neuter_title.capitalize
+    end
+  end
+
   def get_govtrack_image
     url = "http://www.govtrack.us/congress/members/#{self.govtrack_id}"
     doc = Nokogiri::HTML(open(url))
     photo_div = doc.css('.photo img')
     rel_photo = photo_div.first['src'] if photo_div.present?
     abs_photo = ("http://www.govtrack.us" + rel_photo) if rel_photo.present?
+    binding.pry
+    abs_photo
   end
 
   def get_govtrack_image!
