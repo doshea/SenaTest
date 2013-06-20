@@ -52,7 +52,6 @@ class Politician < ActiveRecord::Base
     photo_div = doc.css('.photo img')
     rel_photo = photo_div.first['src'] if photo_div.present?
     abs_photo = ("http://www.govtrack.us" + rel_photo) if rel_photo.present?
-    binding.pry
     abs_photo
   end
 
