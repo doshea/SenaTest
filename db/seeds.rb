@@ -1,18 +1,15 @@
 require 'httparty'
 require 'json'
 
-reset_politicians = true
-# while (reset_politicians != 'y') && (reset_politicians != 'n')
-#   print "\nReset all Politicians? (y/n) "
-#   reset_politicians = gets.chomp.downcase
-# end
+reset_politicians = false
+seed_start_time = Time.now
 
 puts "\nBEGINNING SEED"
 puts "-------------"
 State.delete_all
 Chamber.delete_all
 Party.delete_all
-Politician.delete_all if reset_politicians
+reset_politicians ? Politician.delete_all : puts 'Politicians not deleted to save time.'
 User.delete_all
 puts "\nOld records deleted."
 
@@ -165,3 +162,4 @@ end
 
 puts "\n-------------"
 puts "SEED COMPLETE"
+puts "\n Seeding took ~#{helper.distance_of_time_in_words_to_now(seed_start_time, true)}"
