@@ -9,7 +9,11 @@ puts "-------------"
 State.delete_all
 Chamber.delete_all
 Party.delete_all
-reset_politicians ? Politician.delete_all : puts 'Politicians not deleted to save time.'
+if reset_politicians
+  Politician.delete_all
+else
+  puts 'Politicians not deleted to save time.'
+end
 User.delete_all
 puts "\nOld records deleted."
 
@@ -162,4 +166,4 @@ end
 
 puts "\n-------------"
 puts "SEED COMPLETE"
-puts "\n Seeding took ~#{helper.distance_of_time_in_words_to_now(seed_start_time, true)}"
+puts "\nSeeding took ~ #{distance_of_time_in_words_to_now(seed_start_time, true)}" #this line required an import of the DateHelper in the Rakefile
