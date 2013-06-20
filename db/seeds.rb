@@ -150,7 +150,7 @@ Politician.all.each do |p|
     puts "\nAdding image to #{new_counter.ordinalize} politician"
     puts "#{p.first_name} #{p.last_name}"
     p.get_govtrack_image!
-    image_fail_counter += 1 if p.govtrack_image.nil?
+    image_fail_counter += 1 if p.image.nil?
     new_counter += 1
   # end
 end

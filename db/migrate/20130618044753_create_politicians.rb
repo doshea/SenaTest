@@ -20,7 +20,7 @@ class CreatePoliticians < ActiveRecord::Migration
       t.belongs_to :chamber
       t.belongs_to :party
 
-      t.text :govtrack_image
+      t.text :image
 
       t.timestamps
     end

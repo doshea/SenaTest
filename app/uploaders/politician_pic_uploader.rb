@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class GovtrackImageUploader < CarrierWave::Uploader::Base
+class PolticianPicUploader < CarrierWave::Uploader::Base
 
    include CarrierWave::RMagick
 
