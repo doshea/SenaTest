@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.2.13'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
@@ -24,7 +24,7 @@ group :assets do
   gem 'uglifier'
   gem 'zurb-foundation'
   gem 'foundation-icons-sass-rails'
-  gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails'
+  gem 'jquery-datatables-rails'
 end
 
 group :development, :test do
